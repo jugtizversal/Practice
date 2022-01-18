@@ -1,0 +1,17 @@
+service: lambda-practice
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  runtime: java8
+  region: us-east-2
+package:
+  artifact: build/distributions/Layout.zip
+functions:
+  pushLayout:
+    handler: com.zversal.Practice::practiceLambda
+    events:
+    - httpApi:
+        path: /lambda-practice
+        method: POST
+plugins:
+  - serverless-offline
